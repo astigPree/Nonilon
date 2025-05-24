@@ -1,0 +1,161 @@
+
+{% extends "base.html" %}
+{% load static %}
+
+
+{% block head_block %}
+    <title> NONILON JR NUÑEZ  </title>
+
+    <link rel="stylesheet" href="{% static 'css/fonts/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/portfolio/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/navbar/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/home/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/skills/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/project/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/additional/style.css' %}">
+
+    <script src="{% static 'javascript/navigation/script.js' %}" defer></script>
+    <script src="{% static 'javascript/portfolio/script.js' %}" defer></script>
+    <script src="{% static 'javascript/home/script.js' %}" defer></script>
+    <script src="{% static 'javascript/skills/script.js' %}" defer></script>
+    <script src="{% static 'javascript/project/script.js' %}" defer></script>
+    <script src="{% static 'javascript/additional/script.js' %}" defer></script>
+    
+    <script>
+        
+        function isElementVisible(el) {
+            const rect = el.getBoundingClientRect();
+            return (
+                rect.top >= 0 &&
+                rect.left >= 0 &&
+                rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+                rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+            );
+        }
+        function checkVisibility(elementId , height) { 
+
+            const intervalId = setInterval(() => {
+                const element = document.getElementById(elementId);
+                if (element && isElementVisible(element)) {  
+
+                    element.animate([
+                        { height: '0%' },
+                        { height: height }
+                    ], {
+                        duration: 1000,
+                        fill: 'forwards'
+                    });
+
+                    clearInterval(intervalId); // Stop checking once the element is visible
+                }
+            }, 300); // Check every second
+        }
+
+        function scrollToSection(sectionId , navPos , move=true ,  only_scroll=false) {
+            move && document.getElementById(sectionId).scrollIntoView({ behavior:'smooth' });
+            
+            if (only_scroll) return;
+
+            for (let i = 0; i < 4; i++) {
+                document.getElementById('nav-text-' + (i+1)).classList.remove('nav-text-selected');
+                document.getElementById('icon-nav-' + (i+1)).classList.remove('nav-icon-selected');
+            }
+
+            document.getElementById('nav-text-' + navPos).classList.add('nav-text-selected');
+            document.getElementById('icon-nav-' + navPos).classList.add('nav-icon-selected');
+
+        }
+        
+        const sectionsIds = [ 
+            'home', 
+            'skills',
+            'project',
+            'additional'
+         ]
+  
+         function isSectionVisible(element) {
+            const rect = element.getBoundingClientRect();
+            const viewportHeight = window.innerHeight || document.documentElement.clientHeight;
+            const viewportWidth = window.innerWidth || document.documentElement.clientWidth;
+            const centerOffset = viewportHeight * 0.1; // 10% of the viewport height
+
+            return (
+                rect.left >= 0 &&
+                rect.right <= viewportWidth &&
+                rect.top >= (viewportHeight / 2) - centerOffset &&
+                rect.top <= (viewportHeight / 2) + centerOffset
+            );
+        }
+
+
+        window.addEventListener('scroll', () => {
+
+            for (let i = 0; i < 4 ; i++) {
+                const element = document.getElementById(`${sectionsIds[i]}-icon`); 
+                if (element && isElementVisible(element)) { 
+                    scrollToSection(`${sectionsIds[i]}-content`, i+1 , false); 
+                    break;
+                }
+            }
+        });
+
+    </script>
+    
+{% endblock head_block %}
+    
+
+
+{% block body_block %}
+    
+    {% include "components/component_navigation.html" %}
+    
+    <div class="horizontal-bar-content" id="horizontal-bar-content"></div>
+
+    <section class="body-content" id="main-body-content">
+        {% include "components/component_home.html" %}
+
+        {% include "components/component_skills.html" with programmingLanguages=programmingLanguages otherLanguages=otherLanguages usedFrameWorks=usedFrameWorks usedLibraries=usedLibraries usedSoftwares=usedSoftwares %}
+
+        {% include "components/component_projects.html" with softwareProjects=softwareProjects hardwareProjects=hardwareProjects %}
+        
+        {% include "components/component_additional.html" with clients=clients %}
+
+        <div id="contact-content" class="contact-content">
+
+            <div class="contact-content-article">
+        
+                <span class="contact-icon">
+                    <img src="{% static 'images/contact button.svg' %}" alt="contact icon"> 
+                </span>
+                
+                <article class="my-skills-introduction">
+
+                    <p id="contact-location" class=" koho-bold">
+                        My Contact.
+                    </p>
+          
+                    <nav class="nav-bottom-contact-phone">
+                        <ul>
+                            <li>           
+                                <img class="nav-bottom-icon " src="{% static 'images/github icon.svg' %}" alt="Icon">
+                                <a href="#" class="koho-semibold"  >F. Magallanes, Masbate City </a>
+                            </li>
+                            <li>           
+                                <img class="nav-bottom-icon" src="{% static 'images/mail icon.svg' %}" alt="Icon">
+                                <a href="mailto:aurieldawn069@outlook.com " class="koho-semibold"  > aurieldawn069@outlook.com </a>
+                            </li>
+                        </ul>
+                    </nav>
+                </article>
+
+                
+            </div>
+
+        </div>
+        
+    </section>
+
+
+{% endblock body_block %}
+
+

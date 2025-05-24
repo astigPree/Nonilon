@@ -1,0 +1,87 @@
+{% load static %}
+
+
+<div id="project-content" class="project-content">
+    
+    <div class="project-content-article">
+        
+        <span id="project-icon" class="project-icon">
+            <img src="{% static 'images/projects icon.svg' %}" alt="project icon"> 
+        </span>
+
+        <article class="my-project-introduction">
+
+            <p class=" koho-bold">
+                My Path to Teaching Excellence.
+            </p>
+
+            <p class="koho-regular">
+                Education is more than just a journey—it's a foundation for shaping knowledge and inspiring others. From my formative years in senior high school to my pursuit of a Bachelor in Secondary Education Major in English, each step has strengthened my passion for learning and teaching. With dedication and perseverance, I strive to become an educator who makes a meaningful impact.
+            </p>
+        
+        </article>
+
+    </div>
+
+
+    <div class="project-header-info">
+        <div class="project-header-content">
+            <img src="{% static 'images/laptop icon.svg' %}" alt="terminal icon">
+            <span class="koho-semibold " >School Attended</span>
+        </div>
+
+        <a href="#additional-content" class="koho-bold-italic" style="opacity:0;">Inquire</a> 
+    </div>
+
+
+    <div class="projects-container">
+        {% for project in softwareProjects %}
+
+            <div class="project-card" id="project - {{project.name}} - {{project.id}}"
+                 onclick="window.open('{{project.link}}', '_blank'); return false;"
+            >
+
+                <img src="{{project.image.url}}" alt="{{project.name}}">
+
+                <div class="project-info">
+                    <span class="koho-bold"> {{project.name}} </span>
+                    <span class="koho-regular-italic" > {{project.description}} </span>
+                </div>
+
+            </div>
+
+        {% endfor %}
+    </div>
+
+
+{% comment %} 
+    <div class="project-header-info">
+        <div class="project-header-content">
+            <img src="{% static 'images/laptop icon.svg' %}" alt="terminal icon">
+            <span class="koho-semibold " >Hardware Projects</span>
+        </div>
+ 
+    </div>
+
+
+    <div class="projects-container">
+        {% for project in hardwareProjects %}
+
+            <div class="project-card" id="project - {{project.name}} - {{project.id}}"
+                 onclick="window.open('{{project.link}}', '_blank'); return false;"
+            >
+
+                <img src="{{project.image.url}}" alt="{{project.name}}">
+
+                <div class="project-info">
+                    <span class="koho-bold"> {{project.name}} </span>
+                    <span class="koho-regular-italic" > {{project.description}} </span> 
+                </div>
+
+            </div>
+
+        {% endfor %}
+    </div> {% endcomment %}
+
+
+</div>

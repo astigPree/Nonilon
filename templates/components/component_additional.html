@@ -1,0 +1,223 @@
+{% load static %}
+
+
+<div class="additional-content" id="additional-content"> 
+
+    <div class="additional-content-article">
+        
+        <span id="additional-icon" class="additional-icon">
+            <img src="{% static 'images/additional icon.svg' %}" alt="additional icon"> 
+        </span>
+
+        <article class="my-additional-introduction">
+
+            <p class=" koho-bold">
+                My Experiences.
+            </p>
+
+            <p class="koho-regular">
+                My journey as an educator and professional has been shaped by continuous learning and dedication to excellence. Over the years, I have earned certifications and qualifications that enhance my expertise in teaching, language education, and technology. From becoming a Licensed Professional Teacher to mastering ESL teaching methods, Spanish language basics, and digital proficiency with Google and Microsoft, each experience has strengthened my ability to educate and inspire. 
+            </p>
+        </article>
+
+    </div>
+
+    {% comment %} <div class="additional-header-info">
+        <div class="additional-header-content">
+            <img src="{% static 'images/client testimonials icon.svg' %}" alt="testimonials icon">
+            <span class="koho-semibold " >Client Testimonials</span>
+        </div>
+    </div> {% endcomment %}
+
+
+    {% comment %} <div class="list-of-testimonials" id="list-of-testimonials"> 
+
+        <div class="testimonial-box">
+                {% for client in clients %}
+            
+                    <article class="testimony-container">
+                        <h3 class="client-name koho-bold">
+                            {{client.name}}
+                        </h3>
+
+                        <p class="client-testimony koho-light">
+                            {{client.testimony}}
+                        </p>
+
+                        <div class="client-rating">
+                            
+                            {% if client.rating == 1 %}
+                                <img src="{% static 'images/like star.svg' %}" alt="star icon">
+                                <img src="{% static 'images/unlike star.svg' %}" alt="star icon">
+                                <img src="{% static 'images/unlike star.svg' %}" alt="star icon">
+                                <img src="{% static 'images/unlike star.svg' %}" alt="star icon">
+                                <img src="{% static 'images/unlike star.svg' %}" alt="star icon">
+                            
+                            {% elif client.rating == 2 %}
+                                <img src="{% static 'images/like star.svg' %}" alt="star icon">
+                                <img src="{% static 'images/like star.svg' %}" alt="star icon">
+                                <img src="{% static 'images/unlike star.svg' %}" alt="star icon">
+                                <img src="{% static 'images/unlike star.svg' %}" alt="star icon">
+                                <img src="{% static 'images/unlike star.svg' %}" alt="star icon">
+                            {% elif client.rating == 3 %}
+                                <img src="{% static 'images/like star.svg' %}" alt="star icon">
+                                <img src="{% static 'images/like star.svg' %}" alt="star icon">
+                                <img src="{% static 'images/like star.svg' %}" alt="star icon">
+                                <img src="{% static 'images/unlike star.svg' %}" alt="star icon">
+                                <img src="{% static 'images/unlike star.svg' %}" alt="star icon">
+                            {% elif client.rating == 4 %}
+                                <img src="{% static 'images/like star.svg' %}" alt="star icon">
+                                <img src="{% static 'images/like star.svg' %}" alt="star icon">
+                                <img src="{% static 'images/like star.svg' %}" alt="star icon">
+                                <img src="{% static 'images/like star.svg' %}" alt="star icon">
+                                <img src="{% static 'images/unlike star.svg' %}" alt="star icon">
+                            {% elif client.rating == 5 %}
+                                <img src="{% static 'images/like star.svg' %}" alt="star icon">
+                                <img src="{% static 'images/like star.svg' %}" alt="star icon">
+                                <img src="{% static 'images/like star.svg' %}" alt="star icon">
+                                <img src="{% static 'images/like star.svg' %}" alt="star icon">
+                                <img src="{% static 'images/like star.svg' %}" alt="star icon">
+                            {% else %}
+                                <img src="{% static 'images/unlike star.svg' %}" alt="star icon">
+                                <img src="{% static 'images/unlike star.svg' %}" alt="star icon">
+                                <img src="{% static 'images/unlike star.svg' %}" alt="star icon">
+                                <img src="{% static 'images/unlike star.svg' %}" alt="star icon"> 
+                                <img src="{% static 'images/unlike star.svg' %}" alt="star icon"> 
+                            {% endif %}
+                                
+                        </div>
+
+                    </article>
+
+                {% endfor %}  
+        </div>
+           
+    </div>
+
+    <div class="client-form-container">
+        
+        <div class="client-information-container">
+            <label for="client-name" class="koho-regular client-name-label"> Client Name : </label>
+            <input type="text" maxlength="15" name="client-name" id="client-name-form"
+            placeholder="Please enter your name" class="client-name-form koho-semibold">
+
+            <label for="testimony" class="koho-regular client-testimony-label">Testimonials :</label>
+            <textarea name="testimony" id="testimony" class="client-testimony-form koho-regular"
+            maxlength="335" placeholder="Please write what you feel working with me" ></textarea>
+
+            <div class="client-ratings-container" id="current-rate"     data="3">
+                <img id="star-icon-1" onclick="changesRate(1)" src="{% static 'images/client like icon.svg' %}" alt="star icon">
+                <img id="star-icon-2" onclick="changesRate(2)" src="{% static 'images/client like icon.svg' %}" alt="star icon">
+                <img id="star-icon-3" onclick="changesRate(3)" src="{% static 'images/client like icon.svg' %}" alt="star icon">
+                <img id="star-icon-4" onclick="changesRate(4)" src="{% static 'images/client unlike icon.svg' %}" alt="star icon">
+                <img id="star-icon-5" onclick="changesRate(5)" src="{% static 'images/client unlike icon.svg' %}" alt="star icon">
+                <input type="text" id="csrf-token" value="{{csrf_token}}" hidden>
+            </div>
+
+            <script>
+                function changesRate(rating) {
+                    document.getElementById("star-icon-1").src = "{% static 'images/client unlike icon.svg' %}";
+                    document.getElementById("star-icon-2").src = "{% static 'images/client unlike icon.svg' %}";
+                    document.getElementById("star-icon-3").src = "{% static 'images/client unlike icon.svg' %}";
+                    document.getElementById("star-icon-4").src = "{% static 'images/client unlike icon.svg' %}";
+                    document.getElementById("star-icon-5").src = "{% static 'images/client unlike icon.svg' %}";
+                    for(let i = 1; i <= rating; i++) {
+                        document.getElementById("star-icon-" + i).src = "{% static 'images/client like icon.svg' %}";
+                    }
+
+                    document.getElementById('current-rate').setAttribute('data', rating);
+                    console.log(document.getElementById('current-rate'));
+                }
+            </script>
+
+        </div>
+
+        <div class="client-actions-container">
+            
+            <label for="client-key" class="koho-regular client-name-label"> Client Comment Key : </label>
+            <input type="text" name="client-key" id="client-key"
+            placeholder="Please enter your key" class="client-key-form koho-semibold">  
+
+            <button disabled location="{% url 'submitTestimony' %}" class=" koho-semibold submit-button" id="submit-testimonial">SUBMIT TESTIMONIALS</button>
+            <div class="action-divider koho-semibold-italic">
+                <span></span>
+                OR
+                <span></span>
+            </div>
+            <button onclick="window.open('https://www.facebook.com/makietech.guanzon', '_blank')" class="be-client-button">BE MY CLIENT</button>  
+            
+
+        </div>
+
+        <script>
+
+            
+        </script>
+        
+
+    </div> {% endcomment %}
+
+
+    <div class="additional-header-info">
+        <div class="additional-header-content">
+            <img src="{% static 'images/achievement icon.svg' %}" alt="testimonials icon">
+            <span class="koho-semibold " >List of My Certifications</span>
+        </div>
+    </div>
+
+    <div class="certificate-title koho-semibold">
+        Licensed Professional Teacher 
+        <ul>
+            <li>
+                <span>2027</span>
+            </li>
+        </ul>
+    </div>
+
+    
+    <div class="certificate-title koho-semibold">
+        TESDA Basic Spanish Language 
+        <ul>
+            <li>
+                <span>2026</span>
+            </li>
+        </ul>
+    </div>
+
+    <div class="certificate-title koho-semibold">
+        ESL Certified DLSU-D 
+        <ul>
+            <li>
+                <span>2026</span>
+            </li> 
+        </ul>
+    </div>
+
+    <div class="certificate-title koho-semibold">
+        Google Certified
+        <ul>
+            <li>
+                <span>2023</span>
+            </li> 
+        </ul>
+    </div>
+
+    <div class="certificate-title koho-semibold">
+        Microsoft Certified
+        <ul>
+            <li>
+                <span>2023 </span>
+            </li> 
+        </ul>
+    </div>
+
+    <div class="certificate-title koho-semibold">
+        DepEd Brigada Eskwela
+        <ul>
+            <li>
+                <span>2022 </span>
+            </li> 
+        </ul>
+    </div>
+
+</div>

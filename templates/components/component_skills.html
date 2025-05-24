@@ -1,0 +1,116 @@
+
+{% load static %}
+
+
+<div class="skills-content" id="skills-content">
+
+    <div class="skills-content-article">
+        
+        <span id="skills-icon" class="skills-icon">
+            <img src="{% static 'images/skills icon.svg' %}" alt="skills icon"> 
+        </span>
+
+        <article class="my-skills-introduction">
+
+            <p class=" koho-bold">
+                My Comprehensive Skillset.
+            </p>
+
+            <p class="koho-regular">
+                The following skill ratings reflect my dedication to effective instruction and language education. With a strong foundation in pedagogy and communication, I strive to create engaging learning experiences that empower students and foster academic growth.
+            </p>
+        </article>
+
+    </div>
+ 
+    <div class="skills-header-info">
+        <div class="skill-header-content">
+            <img src="{% static 'images/terminal icon.svg' %}" alt="terminal icon">
+            <span class="koho-semibold " >CORE TEACHING SKILLS</span>
+        </div>
+
+        <a href="#additional-content" class="koho-bold-italic" style="opacity:0;">Rate Me</a> 
+    </div>
+
+
+    <div class="skills-container">
+
+        {% for skill in programmingLanguages %}
+
+            <div class="skill-content" id="skill - {{skill.name}} - {{skill.id}}"
+                 onclick="window.open('{{skill.link}}', '_blank'); return false;"
+            >
+                <div class="skill-content-icon">
+                    
+                    <div>
+                        <img src="{{skill.icon.url}}" alt="{{skill.name}}">
+                    </div>
+                    <span class="koho-semibold-italic">{{skill.name}} </span>
+                </div> 
+
+                <div class="skill-content-rating" id="skill - {{skill.name}} - {{skill.id}} - bar">
+                    <div class="skill-content-rating-bar">
+                        <div class="skill-content-rating-bar-percentage" 
+                        id="{{skill.name}} - {{skill.id}} - style"></div>
+                    </div>
+                    <span class="koho-bold">{{skill.rating}}% </span>
+
+                </div>
+            </div>
+        
+            <script> 
+
+                checkVisibility('{{skill.name}} - {{skill.id}} - style' , `${100 - {{skill.rating}}}%`)
+
+            </script>
+
+        {% endfor %}
+    </div>
+
+
+     
+    <div class="skills-header-info">
+        <div class="skill-header-content">
+            <img src="{% static 'images/terminal icon.svg' %}" alt="terminal icon">
+            <span class="koho-semibold " >ENGLISH-SPECIFIC SKILLS </span>
+        </div>
+    </div>
+
+
+    <div class="skills-container">
+
+        {% for skill in otherLanguages %}
+
+            <div class="skill-content" id="skill - {{skill.name}} - {{skill.id}}"
+                 onclick="window.open('{{skill.link}}', '_blank'); return false;"
+            >
+                <div class="skill-content-icon">
+                    
+                    <div>
+                        <img src="{{skill.icon.url}}" alt="{{skill.name}}">
+                    </div>
+                    <span class="koho-semibold-italic">{{skill.name}} </span>
+                </div> 
+
+                <div class="skill-content-rating">
+                    <div class="skill-content-rating-bar">
+                        <div class="skill-content-rating-bar-percentage" 
+                        id="{{skill.name}} - {{skill.id}} - style"></div>
+                    </div>
+                    <span class="koho-bold">{{skill.rating}}% </span>
+
+                </div>
+            </div>
+ 
+            <script> 
+
+                checkVisibility('{{skill.name}} - {{skill.id}} - style' , `${100 - {{skill.rating}}}%`)
+
+            </script>
+
+        {% endfor %}
+    </div>
+
+
+</div>
+

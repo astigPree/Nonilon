@@ -1,0 +1,81 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=KoHo:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;1,200;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+
+    
+    <link rel="stylesheet" href="{% static 'css/base/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/fonts/style.css' %}">
+    <link rel="icon" href="{% static 'images/icon.svg' %}" type="image/svg+xml">
+    
+    <script src="{% static 'javascript/base/script.js' %}" defer></script>
+
+    {% block head_block %}
+        <title>Document</title>
+    {% endblock head_block %}
+</head>
+<body>
+
+    <div class="loading-content" id="loading-page">
+        
+        <img class="loading-icon" src="{% static 'images/radius-noni.png' %}" alt="Icon">
+
+        <div class="loading-circles">
+            <div class="loading-circle"></div>
+            <div class="loading-circle"></div>
+            <div class="loading-circle"></div>
+            <div class="loading-circle"></div>
+            <div class="loading-circle"></div>
+            <div class="loading-circle"></div>
+        </div>
+
+    </div>
+
+    <div class="toast " id="toast">
+        <img class="taost-icon" src="{% static 'images/error-emoji.svg' %}" alt="">
+        <p class="toast-message koho-bold-italic" id="toast-message"></p>
+    </div>
+
+    {% comment %} <header>
+        {% block header_block %}
+            
+        {% endblock header_block %}
+    </header> {% endcomment %}
+
+    {% comment %} <nav> 
+        {% block nav_block %}
+            
+        {% endblock nav_block %} 
+    </nav> {% endcomment %}
+
+
+    {% comment %} <aside>
+        {% block aside_block %}
+        
+        {% endblock aside_block %}
+    </aside> {% endcomment %}
+
+    <main>
+        {% block body_block %}
+            
+    
+        {% endblock body_block %}
+    </main>
+    
+{% comment %} 
+    <footer>
+        {% block footer_block %}
+
+        {% endblock footer_block %}
+    </footer> {% endcomment %}
+
+
+</body>
+</html>

@@ -1,0 +1,61 @@
+{% load static %}
+
+
+<aside class="main-navigation" id="main-navigation">
+    
+    <img  class="nav-main-icon" src="{% static 'images/noni-with-name.png' %}" alt="Icon">
+    <img  style="opacity: 0;" class="nav-main-icon-without-text" src="{% static 'images/makietech icon.svg' %}" alt="Icon">
+
+    <div class="navigation-container">
+
+        <div class="nav-horizontal-bar"></div>
+
+        <div class="nav-icons-texts">
+            <nav class="nav-icons">
+                <ul>
+                    <li id="icon-nav-1" class="nav-icon nav-icon-selected nav-button" onclick="scrollToSection('home-content' , 1)">
+                        <img src="{% static 'images/home icon.svg' %}" alt="Icon">
+                    </li>
+                    <li id="icon-nav-2" class="nav-icon  nav-button" onclick="scrollToSection('skills-content' , 2)">
+                        <img  src="{% static 'images/skills icon.svg' %}" alt="Icon">
+                    </li>
+                    <li id="icon-nav-3" class="nav-icon  nav-button" onclick="scrollToSection('project-content', 3)">
+                        <img   src="{% static 'images/projects icon.svg' %}" alt="Icon">
+                    </li>
+                    <li id="icon-nav-4" class="nav-icon nav-button" onclick="scrollToSection('additional-content', 4)">
+                        <img   src="{% static 'images/additional icon.svg' %}" alt="Icon">
+                    </li>
+                </ul>
+            </nav>
+
+            <nav class="nav-texts">
+                <ul>
+                    <li id="nav-text-1" class="nav-text nav-text-selected koho-semibold  nav-button" onclick="scrollToSection('home-content', 1)">HOME</li>
+                    <li id="nav-text-2" class="nav-text koho-semibold  nav-button" onclick="scrollToSection('skills-content' , 2)">SKILLS</li>
+                    <li id="nav-text-3" class="nav-text koho-semibold  nav-button" onclick="scrollToSection('project-content', 3)">EDUCATION</li>
+                    <li id="nav-text-4" class="nav-text koho-semibold  nav-button" onclick="scrollToSection('additional-content' , 4)">EXPERIENCE</li>
+                    
+                </ul>
+            </nav>
+ 
+
+        </div>
+    </div>
+
+    
+    <nav class="nav-bottom-contact">
+        <ul>
+            <li>           
+                <img class="nav-bottom-icon " src="{% static 'images/github icon.svg' %}" alt="Icon">
+                <a href="#" class="koho-semibold"  >F. Magallanes, Masbate City </a>
+            </li>
+            <li>           
+                <img class="nav-bottom-icon" src="{% static 'images/mail icon.svg' %}" alt="Icon">
+                <a href="mailto:aurieldawn069@outlook.com " class="koho-semibold"  > aurieldawn069@outlook.com </a>
+            </li>
+        </ul>
+    </nav>
+
+    <img class="contact-button" onclick="scrollToSection('contact-location', 0 , true, true)" src="{% static 'images/contact button.svg' %}" alt="contact icon">
+
+</aside>
